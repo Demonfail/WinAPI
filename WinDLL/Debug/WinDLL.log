@@ -1,4 +1,9 @@
-﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(368,5): warning MSB8004: Output Directory does not end with a trailing slash.  This build instance will add the slash as it is required to allow proper evaluation of the Output Directory.
+﻿  Resource.cpp
+  Main.cpp
+  Error.cpp
   CWindow.cpp
-  WinDLL.vcxproj -> E:\WinDLL.gmx\datafiles\WinDLL.dll
-  WinDLL.vcxproj -> E:\WinDLL.gmx\datafiles\WinDLL.pdb (Partial PDB)
+  CNotification.cpp
+  Generating Code...
+     Creating library E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.lib and object E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.exp
+  WinDLL.vcxproj -> E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.dll
+  WinDLL.vcxproj -> E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.pdb (Partial PDB)

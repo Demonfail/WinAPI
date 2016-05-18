@@ -4,6 +4,11 @@
 #include "Error.h"
 #include "Type.h"
 
+enum CWindowFlags {
+	flg_ShowWindow,
+	flg_DragFiles
+};
+
 class CWindow {
 public:
 	CWindow();
@@ -17,6 +22,7 @@ public:
 	ErrorCode SetTitle(string title);
 	ErrorCode SetParent(CWindow* parent);
 	ErrorCode SetWindowStyle(uint flags);
+	ErrorCode SetWindowFlag(CWindowFlags flag, uint state);
 	ErrorCode Create();
 	ErrorCode Update();
 

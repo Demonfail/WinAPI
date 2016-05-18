@@ -1,89 +1,107 @@
 #include "Main.h"
 
+
+/**
+#* Resource.
+**/
+GMEXPORT double WinAPI_ResourceIconLoad(string file) {
+	m_vIcon.push_back(new Icon());
+	uint ind = m_vIcon.size() - 1;
+	ErrorCode err = m_vIcon[ind]->Load(file);
+	ErrorHandle(err);
+
+	return ind;
+}
+
+/**
+#* Notification.
+**/
+GMEXPORT double WinAPI_NotificationTrayAdd() {
+	m_vNotification.push_back(new CNotification());
+	return m_vNotification.size() - 1;
+}
+
+GMEXPORT double WinAPI_NotificationTraySetWindow(double index, double window) {
+	ErrorCode err = m_vNotification[(uint)index]->SetWindow(m_vWindow[(uint)window]);
+	return ErrorHandle(err);
+}
 /**
 #* Window.
 **/
 GMEXPORT double WinAPI_WindowAdd() {
-	Window.push_back(new CWindow());
-	return Window.size() - 1;
+	m_vWindow.push_back(new CWindow());
+	return  m_vWindow.size() - 1;
 }
 
 GMEXPORT double WinAPI_WindowSetSize(double index, double width, double height) {
-	ErrorCode err = Window[(uint)index]->SetSize((uint)width, (uint)height);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetSize((uint)width, (uint)height);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSetPosition(double index, double x, double y) {
-	ErrorCode err = Window[(uint)index]->SetPosition((uint)x, (uint)y);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetPosition((uint)x, (uint)y);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSetClassStyle(double index, double style) {
-	ErrorCode err = Window[(uint)index]->SetClassStyle((uint)style);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetClassStyle((uint)style);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSetIconFile(double index, string icon, double size) {
-	ErrorCode err = Window[(uint)index]->SetIconFile(icon, (uint)size);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetIconFile(icon, (uint)size);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSetIconInternal(double index, double icon) {
-	ErrorCode err = Window[(uint)index]->SetIconInternal((uint)icon);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetIconInternal((uint)icon);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSetCursor(double index, double cursor) {
-	ErrorCode err = Window[(uint)index]->SetCursor((uint)cursor);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetCursor((uint)cursor);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSetBackground(double index, double colour) {
-	ErrorCode err = Window[(uint)index]->SetBackground((uint)colour);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetBackground((uint)colour);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSetTitle(double index, string title) {
-	ErrorCode err = Window[(uint)index]->SetTitle(title);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetTitle(title);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSetParent(double index, double index2) {
-	ErrorCode err = Window[(uint)index]->SetParent(Window[(uint)index2]);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetParent(m_vWindow[(uint)index2]);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSetStyle(double index, double style) {
-	ErrorCode err = Window[(uint)index]->SetWindowStyle((uint)style);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->SetWindowStyle((uint)style);
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_WindowSetFlag(double index, double flag, double state) {
+	CWindowFlags flags[2] = { CWindowFlags::flg_ShowWindow, CWindowFlags::flg_DragFiles };
+	ErrorCode err = m_vWindow[(uint)index]->SetWindowFlag(flags[(uint)flag], (uint)state);
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowCreate(double index) {
-	ErrorCode err = Window[(uint)index]->Create();
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->Create();
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowUpdate(double index) {
-	ErrorCode err = Window[(uint)index]->Update();
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->Update();
+	return ErrorHandle(err);
 }
 
 GMEXPORT double WinAPI_WindowSet(double index, LPCSTR WinH) {
-	ErrorCode err = Window[(uint)index]->Set((HWND)WinH);
-	ErrorHandle(err);
-	return 1;
+	ErrorCode err = m_vWindow[(uint)index]->Set((HWND)WinH);
+	return ErrorHandle(err);
 }
 /*
 #define ID_TRAY_APP_ICON    1001
@@ -101,59 +119,6 @@ GMEXPORT double Win_Init(int WinH, const char* title, const char* Icon) {
 	WindowHandle = (HWND)(int)WinH;
 	WinTitle = TEXT(title);
 	WinIcon = (HICON)LoadImage(NULL, TEXT(Icon), IMAGE_ICON, 32, 32, LR_LOADFROMFILE);
-	return 1;
-}
-
-GMEXPORT double Win_DragFileEnable(double enable) {
-	bool TypeList[2] = { false, true };
-	DragAcceptFiles(WindowHandle, TypeList[(int)enable]);
-	return 1;
-}
-
-GMEXPORT double Win_DragFileCount() {
-	return draggedFiles.size();
-}
-
-GMEXPORT const char* Win_DragFileGet(double index) {
-	return draggedFiles[(int)index].c_str();
-}
-
-GMEXPORT double Win_DragFileClear() {
-	draggedFiles.clear();
-	return 1;
-}
-
-GMEXPORT double Win_TrayCreateIcon(const char* Tip) {
-	memset(&IconData, 0, sizeof(NOTIFYICONDATA));
-	IconData.cbSize = sizeof(NOTIFYICONDATA);
-	IconData.hWnd = WindowHandle;
-	IconData.uID = ID_TRAY_APP_ICON;
-
-	IconData.uVersion = NOTIFYICON_VERSION_4;
-	IconData.uFlags = NIF_ICON | NIF_TIP | NIF_GUID | NIF_INFO;
-	IconData.dwInfoFlags = 0 | NIIF_LARGE_ICON | NIIF_RESPECT_QUIET_TIME;
-	IconData.uCallbackMessage = WM_TRAY_ICON;
-	IconData.uTimeout = 2000;
-	IconData.hIcon = WinIcon;
-	strcpy_s(IconData.szTip, TEXT(Tip));
-	return 1;
-}
-
-GMEXPORT double Win_TrayAddIcon() {
-	Shell_NotifyIcon(NIM_ADD, &IconData);
-	Shell_NotifyIcon(NIM_SETVERSION, &IconData);
-	return 1;
-}
-
-GMEXPORT double Win_TrayNotification(const char* name, const char* text) {
-	strcpy_s(IconData.szInfo, TEXT(text));
-	strcpy_s(IconData.szInfoTitle, TEXT(name));
-	Shell_NotifyIcon(NIM_MODIFY, &IconData);
-	return 1;
-}
-
-GMEXPORT double Win_TrayRemoveIcon() {
-	Shell_NotifyIcon(NIM_DELETE, &IconData);
 	return 1;
 }
 

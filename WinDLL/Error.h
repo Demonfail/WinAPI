@@ -14,4 +14,4 @@ enum ErrorCode {
 
 
 const char* ErrorGetString(ErrorCode err);
-void ErrorHandle(ErrorCode err);
+double ErrorHandle(ErrorCode err);

@@ -69,10 +69,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <OutDir>E:\WinDLL.gmx\datafiles</OutDir>
+    <OutDir>$(SolutionDir)..\WinDLL.gmx\datafiles\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <OutDir>E:\WinDLL.gmx\datafiles</OutDir>
+    <OutDir>$(SolutionDir)..\WinDLL.gmx\datafiles\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -115,14 +115,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CNotification.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="Error.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Resource.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CNotification.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="Error.h" />
     <ClInclude Include="Main.h" />
+    <ClInclude Include="Resource.h" />
     <ClInclude Include="Type.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

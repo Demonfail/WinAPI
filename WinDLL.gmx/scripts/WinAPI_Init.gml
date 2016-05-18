@@ -15,3 +15,4 @@ global.__WINAPI__[10] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet
 global.__WINAPI__[11] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetParent", dll_cdecl, ty_real, 2, ty_real, ty_real);
 global.__WINAPI__[12] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetStyle", dll_cdecl, ty_real, 2, ty_real, ty_real);
 global.__WINAPI__[13] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet", dll_cdecl, ty_real, 2, ty_real, ty_string);
+global.__WINAPI__[14] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetFlag", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);

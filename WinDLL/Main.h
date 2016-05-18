@@ -1,7 +1,5 @@
 #pragma once
 
-#include "CWindow.h"
-#include "Error.h"
 #include <vector>
 #include <Windows.h>
 #include <Commctrl.h>
@@ -9,6 +7,15 @@
 #include <assert.h>
 #include <string>
 
+#include "CWindow.h"
+#include "CNotification.h"
+#include "Resource.h"
+#include "Error.h"
+#include "Type.h"
+
 #define GMEXPORT extern "C" __declspec (dllexport)
 
-std::vector<CWindow*> Window;
+std::vector<Icon*> m_vIcon;
+
+std::vector<CWindow*> m_vWindow;
+std::vector<CNotification*> m_vNotification;

@@ -429,7 +429,8 @@
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="11">
+    <constants number="16">
+      <constant name="WF_SHOW">0</constant>
       <constant name="CS_VREDRAW">$0001</constant>
       <constant name="CS_HREDRAW">$0002</constant>
       <constant name="WS_OVERLAPPEDWINDOW">WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME | WS_MINIMIZEBOX | WS_MAXIMIZEBOX</constant>
@@ -441,6 +442,10 @@
       <constant name="WS_MAXIMIZEBOX">$00010000</constant>
       <constant name="IDI_APPLICATION">32512</constant>
       <constant name="IDC_ARROW">32512</constant>
+      <constant name="WB_WHITE">0</constant>
+      <constant name="WB_GREY">1</constant>
+      <constant name="WB_BLACK">2</constant>
+      <constant name="WF_DRAGFILES">1</constant>
     </constants>
   </ConfigConstants>
 </Config>

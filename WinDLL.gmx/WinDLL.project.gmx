@@ -30,27 +30,30 @@
   <scripts name="scripts">
     <scripts name="WinAPI">
       <script>scripts\WinAPI_Init.gml</script>
-      <script>scripts\WinAPI_WindowAdd.gml</script>
-      <script>scripts\WinAPI_WindowCreate.gml</script>
-      <script>scripts\WinAPI_WindowUpdate.gml</script>
-      <script>scripts\WinAPI_WindowSetSize.gml</script>
-      <script>scripts\WinAPI_WindowSetPosition.gml</script>
-      <script>scripts\WinAPI_WindowSetClassStyle.gml</script>
-      <script>scripts\WinAPI_WindowSetIconFile.gml</script>
-      <script>scripts\WinAPI_WindowSetIconInternal.gml</script>
-      <script>scripts\WinAPI_WindowSetCursor.gml</script>
-      <script>scripts\WinAPI_WindowSetBackground.gml</script>
-      <script>scripts\WinAPI_WindowSetTitle.gml</script>
-      <script>scripts\WinAPI_WindowSetParent.gml</script>
-      <script>scripts\WinAPI_WindowSetStyle.gml</script>
-      <script>scripts\WinAPI_WindowSet.gml</script>
+      <scripts name="Window">
+        <script>scripts\WinAPI_WindowAdd.gml</script>
+        <script>scripts\WinAPI_WindowCreate.gml</script>
+        <script>scripts\WinAPI_WindowSet.gml</script>
+        <script>scripts\WinAPI_WindowSetBackground.gml</script>
+        <script>scripts\WinAPI_WindowSetClassStyle.gml</script>
+        <script>scripts\WinAPI_WindowSetCursor.gml</script>
+        <script>scripts\WinAPI_WindowSetIconFile.gml</script>
+        <script>scripts\WinAPI_WindowSetIconInternal.gml</script>
+        <script>scripts\WinAPI_WindowSetParent.gml</script>
+        <script>scripts\WinAPI_WindowSetPosition.gml</script>
+        <script>scripts\WinAPI_WindowSetSize.gml</script>
+        <script>scripts\WinAPI_WindowSetStyle.gml</script>
+        <script>scripts\WinAPI_WindowSetTitle.gml</script>
+        <script>scripts\WinAPI_WindowUpdate.gml</script>
+        <script>scripts\WinAPI_WindowSetFlag.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">
-    <object>objects\object0</object>
+    <object>objects\obj_debug</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\rm_debug</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

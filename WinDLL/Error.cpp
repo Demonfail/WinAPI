@@ -14,12 +14,12 @@ const char* ErrorGetString(ErrorCode err) {
 	return "";
 }
 
-void ErrorHandle(ErrorCode err) {
+double ErrorHandle(ErrorCode err) {
 	if (err == ErrorCode::ERR_OK) {
-		return;
+		return 1;
 	}
 
 	std::cout << ErrorGetString(err);
 	MessageBox(NULL, TEXT(ErrorGetString(err)), "Error!", MB_ICONSTOP);
-	return;
+	return 0;
 }

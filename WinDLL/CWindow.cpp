@@ -1,35 +1,37 @@
 #include "CWindow.h"
 
-LONG_PTR g_lpWndProc = NULL;
+WNDPROC g_lpWndProc = NULL;
 
-LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
+LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
 	switch (message)
 	{
 		case WM_DESTROY:
-			DestroyWindow(hWnd);
+				DestroyWindow(hWnd);
 			break;
 
 		case WM_PAINT:
-			ValidateRect(hWnd, 0);
+				ValidateRect(hWnd, NULL);
 			break;
 
 		case WM_DROPFILES:
-				MessageBox(hWnd, "That's what I'm talking about, yo.", "Hey hey hey.", 0);
+				MessageBox(hWnd, "This should have appeared if files were dragged.", "WinAPI", 0);
 			break;
 
 		default:
-			return CallWindowProc((WNDPROC)g_lpWndProc, hWnd, message, wParam, lParam);
+			return CallWindowProc(g_lpWndProc, hWnd, message, wParam, lParam);
 			break;
 	}
-
 	return 0;
 }
 
 CWindow::CWindow() {
+	m_hiInst = GetModuleHandle(NULL);
+	memset(&m_wcClass, 0, sizeof(WNDCLASSEX));
+
 	m_wcClass.cbSize        = sizeof(WNDCLASSEX);
 	m_wcClass.cbClsExtra    = 0;
 	m_wcClass.cbWndExtra    = 0;
-	m_wcClass.lpfnWndProc   = WndProc;
+	m_wcClass.lpfnWndProc   = WindowProc;
 	m_wcClass.hInstance     = m_hiInst;
 	m_wcClass.lpszClassName = m_sWinClassName;
 	m_wcClass.lpszMenuName  = NULL;
@@ -110,9 +112,36 @@ ErrorCode CWindow::SetWindowStyle(uint flags) {
 	return ErrorCode::ERR_OK;
 }
 
+ErrorCode CWindow::SetWindowFlag(CWindowFlags flag, uint state) {
+	switch (flag) {
+		case CWindowFlags::flg_ShowWindow:
+		{
+			int States[5] = { SW_MINIMIZE, SW_MAXIMIZE, SW_RESTORE, SW_SHOW, SW_HIDE };
+			ShowWindow(m_whHandle, States[state]);
+			return ErrorCode::ERR_OK;
+		}
+		break;
+
+		case CWindowFlags::flg_DragFiles:
+		{
+			bool States[2] = { false, true };
+			DragAcceptFiles(m_whHandle, States[state]);
+			return ErrorCode::ERR_OK;
+		}
+		break;
+
+		default:
+		{
+			return ErrorCode::ERR_FAIL;
+		}
+		break;
+	}
+	return ErrorCode::ERR_FAIL;
+}
+
 ErrorCode CWindow::SetParent(CWindow* parent) {
 	m_whParent = parent->GetWindowHandle();
-	if (!m_lpWndProc) {
+	if (!m_whParent) {
 		return ErrorCode::ERR_SET;
 	}
 	return ErrorCode::ERR_OK;
@@ -122,7 +151,7 @@ ErrorCode CWindow::Set(HWND handle) {
 	bool m_bIsMain = true;
 	m_whHandle = handle;
 
-	g_lpWndProc = SetWindowLongPtr(m_whHandle, GWL_WNDPROC, (LONG_PTR)WndProc);
+	g_lpWndProc = (WNDPROC)SetWindowLongA(m_whHandle, GWL_WNDPROC, (LONG)WindowProc);
 	if (!g_lpWndProc) {
 		return ErrorCode::ERR_HOOK;
 	}
@@ -146,12 +175,13 @@ HWND CWindow::GetWindowHandle() {
 }
 
 ErrorCode CWindow::Update() {
-	UpdateWindow(m_whHandle);
-	ShowWindow(m_whHandle, true);
+	while (1) {
+		UpdateWindow(m_whHandle);
 
-	MSG msg;
-	GetMessage(&msg, NULL, 0, 0);
-	TranslateMessage(&msg);
-	DispatchMessage(&msg);
-	return ErrorCode::ERR_OK;
+		MSG msg;
+		GetMessage(&msg, m_whHandle, 0, 0);
+		TranslateMessage(&msg);
+		DispatchMessage(&msg);
+		return ErrorCode::ERR_OK;
+	}
 }
