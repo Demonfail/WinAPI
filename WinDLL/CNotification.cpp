@@ -23,7 +23,7 @@ ErrorCode CNotification::SetID(uint id) {
 	return ErrorCode::ERR_OK;
 }
 
-ErrorCode CNotification::SetFlags(uint flags) { //NIF_ICON | NIF_TIP | NIF_GUID | NIF_INFO
+ErrorCode CNotification::SetFlags(uint flags) {
 	m_niTray.uFlags = flags;
 	if (!m_niTray.uFlags) {
 		return ErrorCode::ERR_SET;
@@ -31,7 +31,7 @@ ErrorCode CNotification::SetFlags(uint flags) { //NIF_ICON | NIF_TIP | NIF_GUID 
 	return ErrorCode::ERR_OK;
 }
 
-ErrorCode CNotification::SetInfoFlags(uint flags) { //NIIF_LARGE_ICON | NIIF_RESPECT_QUIET_TIME
+ErrorCode CNotification::SetInfoFlags(uint flags) {
 	m_niTray.dwInfoFlags = flags;
 	if (!m_niTray.dwInfoFlags) {
 		return ErrorCode::ERR_SET;

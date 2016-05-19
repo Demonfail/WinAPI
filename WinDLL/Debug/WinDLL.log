@@ -1,9 +1,3 @@
-﻿  Resource.cpp
-  Main.cpp
-  Error.cpp
-  CWindow.cpp
-  CNotification.cpp
-  Generating Code...
-     Creating library E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.lib and object E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.exp
+﻿  CNotification.cpp
   WinDLL.vcxproj -> E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.dll
   WinDLL.vcxproj -> E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.pdb (Partial PDB)

@@ -16,15 +16,62 @@ GMEXPORT double WinAPI_ResourceIconLoad(string file) {
 /**
 #* Notification.
 **/
-GMEXPORT double WinAPI_NotificationTrayAdd() {
+GMEXPORT double WinAPI_TaskbarAdd() {
 	m_vNotification.push_back(new CNotification());
 	return m_vNotification.size() - 1;
 }
 
-GMEXPORT double WinAPI_NotificationTraySetWindow(double index, double window) {
+GMEXPORT double WinAPI_TaskbarSetWindow(double index, double window) {
 	ErrorCode err = m_vNotification[(uint)index]->SetWindow(m_vWindow[(uint)window]);
 	return ErrorHandle(err);
 }
+
+GMEXPORT double WinAPI_TaskbarSetID(double index, double id) {
+	ErrorCode err = m_vNotification[(uint)index]->SetID((uint)id);
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_TaskbarSetFlags(double index, double flags) {
+	ErrorCode err = m_vNotification[(uint)index]->SetFlags((uint)flags);
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_TaskbarSetInfoFlags(double index, double flags) {
+	ErrorCode err = m_vNotification[(uint)index]->SetInfoFlags((uint)flags);
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_TaskbarSetTimeout(double index, double ms) {
+	ErrorCode err = m_vNotification[(uint)index]->SetTimeout((uint)ms);
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_TaskbarSetIcon(double index, double icon) {
+	ErrorCode err = m_vNotification[(uint)index]->SetIcon(m_vIcon[(uint)icon]);
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_TaskbarSetName(double index, string name) {
+	ErrorCode err = m_vNotification[(uint)index]->SetName(name);
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_TaskbarCreate(double index) {
+	ErrorCode err = m_vNotification[(uint)index]->Create();
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_TaskbarUpdate(double index, string title, string tip) {
+	ErrorCode err = m_vNotification[(uint)index]->Update(title, tip);
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_TaskbarDestroy(double index) {
+	ErrorCode err = m_vNotification[(uint)index]->Destroy();
+	delete m_vNotification[(uint)index];
+	return ErrorHandle(err);
+}
+
 /**
 #* Window.
 **/

@@ -16,3 +16,18 @@ global.__WINAPI__[11] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet
 global.__WINAPI__[12] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetStyle", dll_cdecl, ty_real, 2, ty_real, ty_real);
 global.__WINAPI__[13] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet", dll_cdecl, ty_real, 2, ty_real, ty_string);
 global.__WINAPI__[14] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetFlag", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
+
+
+global.__WINAPI__[20] = external_define(global.__WINAPI_DLL__, "WinAPI_ResourceIconLoad", dll_cdecl, ty_real, 1, ty_string);
+
+global.__WINAPI__[30] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarAdd", dll_cdecl, ty_real, 0);
+global.__WINAPI__[31] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSetWindow", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[32] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSetID", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[33] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSetFlags", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[34] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSetInfoFlags", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[35] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSetTimeout", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[36] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSetIcon", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[37] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSetName", dll_cdecl, ty_real, 2, ty_real, ty_string);
+global.__WINAPI__[38] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarCreate", dll_cdecl, ty_real, 1, ty_real);
+global.__WINAPI__[39] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarUpdate", dll_cdecl, ty_real, 3, ty_real, ty_string, ty_string);
+global.__WINAPI__[40] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarDestroy", dll_cdecl, ty_real, 1, ty_real);

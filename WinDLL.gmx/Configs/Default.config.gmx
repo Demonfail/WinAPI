@@ -429,7 +429,7 @@
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="16">
+    <constants number="22">
       <constant name="WF_SHOW">0</constant>
       <constant name="CS_VREDRAW">$0001</constant>
       <constant name="CS_HREDRAW">$0002</constant>
@@ -446,6 +446,12 @@
       <constant name="WB_GREY">1</constant>
       <constant name="WB_BLACK">2</constant>
       <constant name="WF_DRAGFILES">1</constant>
+      <constant name="NIF_ICON">$00000002</constant>
+      <constant name="NIF_TIP">$00000004</constant>
+      <constant name="NIF_GUID">$00000020</constant>
+      <constant name="NIF_INFO">$00000010</constant>
+      <constant name="NIIF_LARGE_ICON">$00000020</constant>
+      <constant name="NIIF_RESPECT_QUIET_TIME">$00000080</constant>
     </constants>
   </ConfigConstants>
 </Config>

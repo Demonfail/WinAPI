@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CConsole.cpp" />
     <ClCompile Include="CNotification.cpp" />
     <ClCompile Include="CWindow.cpp" />
     <ClCompile Include="Error.cpp" />
@@ -122,6 +123,7 @@
     <ClCompile Include="Resource.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CConsole.h" />
     <ClInclude Include="CNotification.h" />
     <ClInclude Include="CWindow.h" />
     <ClInclude Include="Error.h" />

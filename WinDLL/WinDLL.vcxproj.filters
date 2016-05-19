@@ -36,6 +36,9 @@
     <ClCompile Include="CNotification.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="CConsole.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Error.h">
@@ -55,6 +58,9 @@
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CConsole.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

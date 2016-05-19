@@ -28,6 +28,11 @@
             <string>WinAPI_Init();
 
 /**
+#* Load Resources
+**/
+gmIcon = WinAPI_ResourceIconLoad("ProgIcon.ico");
+
+/**
 #* Hook the Game Maker Window.
 **/
 gmWin = WinAPI_WindowAdd(); {
@@ -35,6 +40,21 @@ gmWin = WinAPI_WindowAdd(); {
     WinAPI_WindowSetFlag(gmWin, WF_SHOW, 0);
 }
 WinAPI_WindowUpdate(gmWin);
+
+/**
+#* Create Task Bar.
+**/
+gmTB = WinAPI_TaskbarAdd(); {
+    WinAPI_TaskbarSetWindow(gmTB, gmWin);
+    WinAPI_TaskbarSetID(gmTB, 1024);
+    WinAPI_TaskbarSetFlags(gmTB, NIF_ICON | NIF_TIP | NIF_GUID | NIF_INFO);
+    WinAPI_TaskbarSetInfoFlags(gmTB, NIIF_LARGE_ICON | NIIF_RESPECT_QUIET_TIME);
+    WinAPI_TaskbarSetTimeout(gmTB, 2000);
+    WinAPI_TaskbarSetIcon(gmTB, gmIcon);
+    WinAPI_TaskbarSetName(gmTB, "WinAPI Test Bench - Taskbar");
+} WinAPI_TaskbarCreate(gmTB);
+
+WinAPI_TaskbarUpdate(gmTB, "Eyyyy", "Lmao");
 
 /**
 #* Create a second Window.
@@ -46,7 +66,7 @@ chWin = WinAPI_WindowAdd(); {
     WinAPI_WindowSetIconInternal(chWin, IDI_APPLICATION);
     WinAPI_WindowSetCursor(chWin, 0);
     WinAPI_WindowSetBackground(chWin, WB_GREY);
-    WinAPI_WindowSetTitle(chWin, "Another Silly Window");
+    WinAPI_WindowSetTitle(chWin, "WinAPI Test Bench - Window");
     WinAPI_WindowSetStyle(chWin, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX); 
       
 } WinAPI_WindowCreate(chWin);
@@ -54,28 +74,6 @@ WinAPI_WindowUpdate(chWin);
 
 WinAPI_WindowSetFlag(chWin, WF_SHOW, 3);
 </string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="2">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string></string>
           </argument>
         </arguments>
       </action>
