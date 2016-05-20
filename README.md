@@ -10,8 +10,8 @@ Why? Because it should be optional to have GM:S Sandboxed & Crossplatform. <br>
 </ol>
 
 <b>Planned Features (Next Release):</b> <ol> 
-  <li type="disc">Taskbar</li>
-  <li type="disc">Desktop Notifications</li>
+  <li type="disc">Taskbar <b>*Done*</b></li>
+  <li type="disc">Desktop Notifications <b>*Done*</b></li>
   <li type="disc">Message Box</li>
   <li type="disc">Console</li>
 </ol>
