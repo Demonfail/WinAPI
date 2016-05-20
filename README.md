@@ -17,9 +17,9 @@ Why? Because it should be optional to have GM:S Sandboxed & Crossplatform. <br>
 <i>Note about Planned Features:
 In this section, you're seeing the features that are being added at the present moment. If it says it's done, that doesn't mean it will be commited right away, since there are most likely bugs present.</i>
 <ol> 
-  <li type="disc">Tooltip</b></li>
-  <li type="disc">Static</b></li>
-  <li type="disc">Progress Bar<b>*Ready*</b></li>
+  <li type="disc">Tooltip<b></b></li>
+  <li type="disc">Static<b></b></li>
+  <li type="disc">Progress Bar<b></b></li>
 </ol>
 
 <b>Developers:</b><br> <ol> 
