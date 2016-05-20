@@ -10,7 +10,7 @@ Why? Because it should be optional to have GM:S Sandboxed & Crossplatform. <br>
   <li type="disc">Taskbars</li>
   <li type="disc">Desktop Notifications</li>
   <li type="disc">Message Boxs</li>
-  <li type="disc">Consoles</li>
+  <li type="disc">Console</li>
 </ol>
 
 <b>Planned Features (Next Release):</b><br>
@@ -19,7 +19,7 @@ In this section, you're seeing the features that are being added at the present 
 <ol> 
   <li type="disc">Tooltip<b></b></li>
   <li type="disc">Static<b></b></li>
-  <li type="disc">Progress Bar<b></b></li>
+  <li type="disc">Progress Bar<b>*Done*</b></li>
 </ol>
 
 <b>Developers:</b><br> <ol> 
