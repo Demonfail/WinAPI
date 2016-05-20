@@ -12,6 +12,8 @@ enum IconType {
 class Icon {
 public:
 	ErrorCode Load(string file);
+	//ErrorCode Free();
+
 	HICON     Get(IconType icon);
 
 private:

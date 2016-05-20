@@ -6,10 +6,10 @@
 
 class CConsole {
 public:
-	ErrorCode Print(string msg);
+	ErrorCode Output(string tag, string text);
 	ErrorCode Create();
-	ErrorCode Update();
 	ErrorCode Destroy();
 private:
-
+	bool m_bExist;
+	FILE* m_pCout;
 };

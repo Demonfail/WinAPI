@@ -80,6 +80,15 @@
       <scripts name="Resource">
         <script>scripts\WinAPI_ResourceIconLoad.gml</script>
       </scripts>
+      <scripts name="Console">
+        <script>scripts\WinAPI_ConsoleAdd.gml</script>
+        <script>scripts\WinAPI_ConsoleCreate.gml</script>
+        <script>scripts\WinAPI_ConsoleDestroy.gml</script>
+        <script>scripts\WinAPI_ConsoleOutput.gml</script>
+      </scripts>
+      <scripts name="Dialog">
+        <script>scripts\WinAPI_MessageShow.gml</script>
+      </scripts>
     </scripts>
   </scripts>
   <objects name="objects">

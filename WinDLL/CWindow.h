@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Windows.h>
+#include <Commctrl.h>
 #include "Error.h"
 #include "Type.h"
 

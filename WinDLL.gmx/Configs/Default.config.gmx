@@ -429,7 +429,7 @@
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="22">
+    <constants number="43">
       <constant name="WF_SHOW">0</constant>
       <constant name="CS_VREDRAW">$0001</constant>
       <constant name="CS_HREDRAW">$0002</constant>
@@ -452,6 +452,27 @@
       <constant name="NIF_INFO">$00000010</constant>
       <constant name="NIIF_LARGE_ICON">$00000020</constant>
       <constant name="NIIF_RESPECT_QUIET_TIME">$00000080</constant>
+      <constant name="IDABORT">3</constant>
+      <constant name="IDCANCEL">2</constant>
+      <constant name="IDCONTINUE">11</constant>
+      <constant name="IDIGNORE">5</constant>
+      <constant name="IDNO">7</constant>
+      <constant name="IDOK">1</constant>
+      <constant name="IDRETRY">4</constant>
+      <constant name="IDTRYAGAIN">10</constant>
+      <constant name="IDYES">6</constant>
+      <constant name="MB_ICONWARNING">$00000030</constant>
+      <constant name="MB_ICONINFORMATION">$00000040</constant>
+      <constant name="MB_ICONQUESTION">$00000020</constant>
+      <constant name="MB_ICONERROR">$00000010</constant>
+      <constant name="MB_ABORTRETRYIGNORE">$00000002</constant>
+      <constant name="MB_CANCELTRYCONTINUE">$00000006</constant>
+      <constant name="MB_HELP">$00004000</constant>
+      <constant name="MB_OK">$00000000</constant>
+      <constant name="MB_OKCANCEL">$00000001</constant>
+      <constant name="MB_RETRYCANCEL">$00000005</constant>
+      <constant name="MB_YESNO">$00000004</constant>
+      <constant name="MB_YESNOCANCEL">$00000003</constant>
     </constants>
   </ConfigConstants>
 </Config>

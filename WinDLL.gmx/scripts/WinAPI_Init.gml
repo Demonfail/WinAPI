@@ -17,9 +17,10 @@ global.__WINAPI__[12] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet
 global.__WINAPI__[13] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet", dll_cdecl, ty_real, 2, ty_real, ty_string);
 global.__WINAPI__[14] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetFlag", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
 
-
+//Resources.
 global.__WINAPI__[20] = external_define(global.__WINAPI_DLL__, "WinAPI_ResourceIconLoad", dll_cdecl, ty_real, 1, ty_string);
 
+//Taskbar
 global.__WINAPI__[30] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarAdd", dll_cdecl, ty_real, 0);
 global.__WINAPI__[31] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSetWindow", dll_cdecl, ty_real, 2, ty_real, ty_real);
 global.__WINAPI__[32] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSetID", dll_cdecl, ty_real, 2, ty_real, ty_real);
@@ -31,3 +32,12 @@ global.__WINAPI__[37] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarSe
 global.__WINAPI__[38] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarCreate", dll_cdecl, ty_real, 1, ty_real);
 global.__WINAPI__[39] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarUpdate", dll_cdecl, ty_real, 3, ty_real, ty_string, ty_string);
 global.__WINAPI__[40] = external_define(global.__WINAPI_DLL__, "WinAPI_TaskbarDestroy", dll_cdecl, ty_real, 1, ty_real);
+
+//Console.
+global.__WINAPI__[41] = external_define(global.__WINAPI_DLL__, "WinAPI_ConsoleAdd", dll_cdecl, ty_real, 0);
+global.__WINAPI__[42] = external_define(global.__WINAPI_DLL__, "WinAPI_ConsoleCreate", dll_cdecl, ty_real, 0);
+global.__WINAPI__[43] = external_define(global.__WINAPI_DLL__, "WinAPI_ConsoleDestroy", dll_cdecl, ty_real, 0);
+global.__WINAPI__[44] = external_define(global.__WINAPI_DLL__, "WinAPI_ConsoleOutput", dll_cdecl, ty_real, 1, ty_string);
+
+//Dialogs.
+global.__WINAPI__[50] = external_define(global.__WINAPI_DLL__, "WinAPI_MessageShow", dll_cdecl, ty_real, 3, ty_string, ty_string, ty_real);

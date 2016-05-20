@@ -1,6 +1,46 @@
 #include "Main.h"
 
 
+
+/**
+#* Console.
+**/
+GMEXPORT double WinAPI_ConsoleAdd() {
+	m_pConsole = new CConsole();
+	return -0x0000;
+}
+
+GMEXPORT double WinAPI_ConsoleCreate() {
+	ErrorCode err = m_pConsole->Create();
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_ConsoleDestroy() {
+	ErrorCode err = m_pConsole->Destroy();
+	return ErrorHandle(err);
+}
+
+GMEXPORT double WinAPI_ConsoleOutput(string text) {
+	ErrorCode err = m_pConsole->Output("", text);
+	return ErrorHandle(err);
+}
+
+/**
+#* Message Box
+*/
+GMEXPORT double WinAPI_MessageShow(string caption, string text, double flags) {
+	CMessageBox* msg = new CMessageBox();
+
+	ErrorCode err = msg->Show(caption, text, (uint)flags);
+	if (!ErrorHandle(err)) {
+		return 0;
+	}
+	uint res = msg->Result();
+	delete msg;
+
+	return res;
+}
+
 /**
 #* Resource.
 **/
@@ -13,6 +53,10 @@ GMEXPORT double WinAPI_ResourceIconLoad(string file) {
 	return ind;
 }
 
+GMEXPORT double WinAPI_ResourceIconFree(double index) {
+	ErrorCode err = ErrorCode::ERR_OK;
+	return err;
+}
 /**
 #* Notification.
 **/

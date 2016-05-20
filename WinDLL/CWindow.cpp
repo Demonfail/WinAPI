@@ -1,9 +1,7 @@
 #include "CWindow.h"
 
-WNDPROC g_lpWndProc = NULL;
-
-LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam) {
-	switch (message)
+LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+	switch (msg)
 	{
 		case WM_DESTROY:
 				DestroyWindow(hWnd);
@@ -18,11 +16,24 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lPara
 			break;
 
 		default:
-			return CallWindowProc(g_lpWndProc, hWnd, message, wParam, lParam);
+			return DefWindowProc(hWnd, msg, wParam, lParam);
 			break;
 	}
 	return 0;
 }
+
+LRESULT CALLBACK WndSubclass(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData) {
+	switch (msg) {
+		case WM_DROPFILES:
+			break;
+
+		default:
+			return DefSubclassProc(hWnd, msg, wParam, lParam);
+			break;
+	}
+	return 0;
+}
+
 
 CWindow::CWindow() {
 	m_hiInst = GetModuleHandle(NULL);
@@ -31,7 +42,7 @@ CWindow::CWindow() {
 	m_wcClass.cbSize        = sizeof(WNDCLASSEX);
 	m_wcClass.cbClsExtra    = 0;
 	m_wcClass.cbWndExtra    = 0;
-	m_wcClass.lpfnWndProc   = WindowProc;
+	m_wcClass.lpfnWndProc   = WndProc;
 	m_wcClass.hInstance     = m_hiInst;
 	m_wcClass.lpszClassName = m_sWinClassName;
 	m_wcClass.lpszMenuName  = NULL;
@@ -114,27 +125,21 @@ ErrorCode CWindow::SetWindowStyle(uint flags) {
 
 ErrorCode CWindow::SetWindowFlag(CWindowFlags flag, uint state) {
 	switch (flag) {
-		case CWindowFlags::flg_ShowWindow:
-		{
+		case CWindowFlags::flg_ShowWindow: {
 			int States[5] = { SW_MINIMIZE, SW_MAXIMIZE, SW_RESTORE, SW_SHOW, SW_HIDE };
 			ShowWindow(m_whHandle, States[state]);
 			return ErrorCode::ERR_OK;
-		}
-		break;
+		} break;
 
-		case CWindowFlags::flg_DragFiles:
-		{
+		case CWindowFlags::flg_DragFiles: {
 			bool States[2] = { false, true };
 			DragAcceptFiles(m_whHandle, States[state]);
 			return ErrorCode::ERR_OK;
-		}
-		break;
+		} break;
 
-		default:
-		{
+		default: {
 			return ErrorCode::ERR_FAIL;
-		}
-		break;
+		} break;
 	}
 	return ErrorCode::ERR_FAIL;
 }
@@ -151,8 +156,7 @@ ErrorCode CWindow::Set(HWND handle) {
 	bool m_bIsMain = true;
 	m_whHandle = handle;
 
-	g_lpWndProc = (WNDPROC)SetWindowLongA(m_whHandle, GWL_WNDPROC, (LONG)WindowProc);
-	if (!g_lpWndProc) {
+	if (!SetWindowSubclass(m_whHandle, WndSubclass, 0, 0)) {
 		return ErrorCode::ERR_HOOK;
 	}
 	return ErrorCode::ERR_OK;
