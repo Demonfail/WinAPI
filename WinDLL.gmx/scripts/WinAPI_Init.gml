@@ -7,15 +7,14 @@ global.__WINAPI__[2]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowUpd
 global.__WINAPI__[3]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetSize", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
 global.__WINAPI__[4]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetPosition", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
 global.__WINAPI__[5]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetClassStyle", dll_cdecl, ty_real, 2, ty_real, ty_real);
-global.__WINAPI__[6]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetIconFile", dll_cdecl, ty_real, 3, ty_real, ty_string, ty_real);
-global.__WINAPI__[7]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetIconInternal", dll_cdecl, ty_real, 2, ty_real, ty_real);
-global.__WINAPI__[8]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetCursor", dll_cdecl, ty_real, 2, ty_real, ty_real);
-global.__WINAPI__[9]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetBackground", dll_cdecl, ty_real, 2, ty_real, ty_real);
-global.__WINAPI__[10] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetTitle", dll_cdecl, ty_real, 2, ty_real, ty_string);
-global.__WINAPI__[11] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetParent", dll_cdecl, ty_real, 2, ty_real, ty_real);
-global.__WINAPI__[12] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetStyle", dll_cdecl, ty_real, 2, ty_real, ty_real);
-global.__WINAPI__[13] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet", dll_cdecl, ty_real, 2, ty_real, ty_string);
-global.__WINAPI__[14] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetFlag", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
+global.__WINAPI__[6]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetIcon", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[7]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetCursor", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[8]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetBackground", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[9]  = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetTitle", dll_cdecl, ty_real, 2, ty_real, ty_string);
+global.__WINAPI__[10] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetParent", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[11] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetStyle", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[12] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet", dll_cdecl, ty_real, 2, ty_real, ty_string);
+global.__WINAPI__[13] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetFlag", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
 
 //Resources.
 global.__WINAPI__[20] = external_define(global.__WINAPI_DLL__, "WinAPI_ResourceIconLoad", dll_cdecl, ty_real, 1, ty_string);
@@ -41,3 +40,16 @@ global.__WINAPI__[44] = external_define(global.__WINAPI_DLL__, "WinAPI_ConsoleOu
 
 //Dialogs.
 global.__WINAPI__[50] = external_define(global.__WINAPI_DLL__, "WinAPI_MessageShow", dll_cdecl, ty_real, 3, ty_string, ty_string, ty_real);
+
+//Progress Bar
+global.__WINAPI__[70] = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarAdd", dll_cdecl, ty_real, 0);
+global.__WINAPI__[71]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarSetRange", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
+global.__WINAPI__[72]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarSetStep", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[73]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarSetWindow", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[74]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarCreate", dll_cdecl, ty_real, 1, ty_real);
+global.__WINAPI__[75]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarUpdate", dll_cdecl, ty_real, 1, ty_real);
+global.__WINAPI__[76]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarDestroy", dll_cdecl, ty_real, 1, ty_real);
+global.__WINAPI__[77]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarSetPosition", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
+global.__WINAPI__[78]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarSetSize", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
+global.__WINAPI__[79]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarSetStyle", dll_cdecl, ty_real, 2, ty_real, ty_real);
+global.__WINAPI__[80]  = external_define(global.__WINAPI_DLL__, "WinAPI_ProgressBarEnableMarquee", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);

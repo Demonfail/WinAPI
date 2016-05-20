@@ -10,6 +10,7 @@
 #include "CConsole.h"
 #include "CWindow.h"
 #include "CNotification.h"
+#include "CProgressBar.h"
 #include "CMessageBox.h"
 
 #include "Resource.h"
@@ -18,9 +19,13 @@
 
 #define GMEXPORT extern "C" __declspec (dllexport)
 
-std::vector<Icon*> m_vIcon;
+class WinAPI {
+public:
+	std::vector<Icon*> m_vIcon;
 
-std::vector<CWindow*> m_vWindow;
-std::vector<CNotification*> m_vNotification;
+	std::vector<CWindow*> m_vWindow;
+	std::vector<CNotification*> m_vNotification;
+	std::vector<CProgressBar*> m_vProgressBar;
 
-CConsole* m_pConsole;
+	CConsole* m_pConsole = new CConsole();
+};

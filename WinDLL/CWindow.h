@@ -2,6 +2,8 @@
 
 #include <Windows.h>
 #include <Commctrl.h>
+
+#include "Resource.h"
 #include "Error.h"
 #include "Type.h"
 
@@ -16,8 +18,7 @@ public:
 	ErrorCode SetSize(uint width, uint height);
 	ErrorCode SetPosition(uint x, uint y);
 	ErrorCode SetClassStyle(uint flags);
-	ErrorCode SetIconFile(string file, uint size);
-	ErrorCode SetIconInternal(uint icon);
+	ErrorCode SetIcon(Icon* icon);
 	ErrorCode SetCursor(uint cursor);
 	ErrorCode SetBackground(uint background);
 	ErrorCode SetTitle(string title);
@@ -32,7 +33,7 @@ public:
 	HWND GetWindowHandle();
 
 private:
-	HICON      m_hiIcon   = NULL;
+	HICON          m_hiIcon;
 	HCURSOR    m_hcCursor = NULL;
 	HWND       m_whHandle = NULL;
 	HINSTANCE  m_hiInst;

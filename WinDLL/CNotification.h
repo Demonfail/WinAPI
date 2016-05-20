@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Windows.h>
+
 #include "CWindow.h"
 #include "Resource.h"
 #include "Error.h"

@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string> WinAPI_Init();
+            <string>WinAPI_Init();
 
 /**
 #* Load Resources
@@ -38,14 +38,14 @@ gmIcon = WinAPI_ResourceIconLoad("ProgIcon.ico");
 gmWin = WinAPI_WindowAdd(); {
     WinAPI_WindowSet(gmWin, window_handle());
 }
-//WinAPI_WindowUpdate(gmWin);
+
 
 /**
 #* Create Task Bar.
 **/
 gmTB = WinAPI_TaskbarAdd(); {
     WinAPI_TaskbarSetWindow(gmTB, gmWin);
-    WinAPI_TaskbarSetID(gmTB, 1024);
+    WinAPI_TaskbarSetID(gmTB, game_id+gmTB);
     WinAPI_TaskbarSetFlags(gmTB, NIF_ICON | NIF_TIP | NIF_GUID | NIF_INFO);
     WinAPI_TaskbarSetInfoFlags(gmTB, NIIF_LARGE_ICON | NIIF_RESPECT_QUIET_TIME);
     WinAPI_TaskbarSetTimeout(gmTB, 2000);
@@ -53,7 +53,7 @@ gmTB = WinAPI_TaskbarAdd(); {
     WinAPI_TaskbarSetName(gmTB, "WinAPI Test Bench - Taskbar");
 } WinAPI_TaskbarCreate(gmTB);
 
-WinAPI_TaskbarUpdate(gmTB, "Eyyyy", "Lmao");
+WinAPI_TaskbarUpdate(gmTB, "WinAPI", "A simple notification is good for your health.");
 
 /**
 #* Ceate Console.
@@ -61,7 +61,7 @@ WinAPI_TaskbarUpdate(gmTB, "Eyyyy", "Lmao");
 gmCn = WinAPI_ConsoleAdd(); {
 
 } WinAPI_ConsoleCreate();
-WinAPI_ConsoleOutput("Fuck you.");
+WinAPI_ConsoleOutput("I see you've compiled the example! Here's a console for your efforts.");
 
 /**
 #* Create a second Window.
@@ -70,17 +70,49 @@ chWin = WinAPI_WindowAdd(); {
     WinAPI_WindowSetSize(chWin, 640, 480);
     WinAPI_WindowSetPosition(chWin, 64, 64);
     WinAPI_WindowSetClassStyle(chWin, CS_HREDRAW | CS_VREDRAW);
-    WinAPI_WindowSetIconInternal(chWin, IDI_APPLICATION);
+    WinAPI_WindowSetIcon(chWin, gmIcon);
     WinAPI_WindowSetCursor(chWin, 0);
-    WinAPI_WindowSetBackground(chWin, WB_GREY);
+    WinAPI_WindowSetBackground(chWin, WB_WHITE);
     WinAPI_WindowSetTitle(chWin, "WinAPI Test Bench - Window");
-    WinAPI_WindowSetStyle(chWin, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX); 
+    WinAPI_WindowSetStyle(chWin, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU | WS_MINIMIZEBOX | WS_MAXIMIZEBOX | WS_MAXIMIZE); //You can use WS_OVERLAPPEDWINDOW, but thick frames are disgusting.
       
-} WinAPI_WindowCreate(chWin);
+} WinAPI_WindowCreate(chWin); {
+    chWinPB1 = WinAPI_ProgressBarAdd(); {
+        WinAPI_ProgressBarSetWindow(chWinPB1, chWin);
+        WinAPI_ProgressBarSetRange(chWinPB1, 0, 100);
+        WinAPI_ProgressBarSetPosition(chWinPB1, 2, 2);
+        WinAPI_ProgressBarSetSize(chWinPB1, 256, 32);
+        WinAPI_ProgressBarSetStyle(chWinPB1, WS_CHILD | WS_VISIBLE | PBS_MARQUEE);
+        WinAPI_ProgressBarSetStep(chWinPB1, 1);
+    } WinAPI_ProgressBarCreate(chWinPB1);
+    WinAPI_ProgressBarEnableMarquee(chWinPB1, true, 30);
+}
 WinAPI_WindowUpdate(chWin);
 
-WinAPI_WindowSetFlag(chWin, WF_SHOW, 3);
-
+WinAPI_WindowSetFlag(chWin, WF_SHOW, 0);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>WinAPI_ProgressBarUpdate(chWinPB1);
 </string>
           </argument>
         </arguments>
@@ -103,18 +135,18 @@ WinAPI_WindowSetFlag(chWin, WF_SHOW, 3);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var res = WinAPI_MessageShow("Hey!", "'WinAPI_MessageShow' works!", MB_ICONQUESTION | MB_OKCANCEL);
+            <string>var res = WinAPI_MessageShow("Hey!", "Did you just click on the default Game Maker Window?", MB_ICONQUESTION | MB_YESNO);
 switch(res) {
-    case IDOK:
-        show_message("You clicked ok!");
+    case IDYES:
+        show_message("Good job for telling the truth!");
     break
     
-    case IDCANCEL:
-        show_message("You clicked cancel!");
+    case IDNO:
+        show_message("Lying is bad.");
     break;
     
     default:
-        show_message("How have you done this!");
+        show_message("How have you done this?");
     break;
 }
 </string>
@@ -164,7 +196,7 @@ WinAPI_TaskbarDestroy(gmTB);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(0, 0,  "This displays if you haven't broken DX9.");
+            <string>draw_text(0, 0,  "This won't display if the window is broken by the DLL. If you're reading this, it's working fine.");
 draw_text(0, 12,  "UPS: "+string(fps));
 draw_text(0, 24, "FPS: "+string(fps_real));
 </string>

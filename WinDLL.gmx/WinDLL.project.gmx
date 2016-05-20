@@ -54,8 +54,7 @@
         <script>scripts\WinAPI_WindowSetBackground.gml</script>
         <script>scripts\WinAPI_WindowSetClassStyle.gml</script>
         <script>scripts\WinAPI_WindowSetCursor.gml</script>
-        <script>scripts\WinAPI_WindowSetIconFile.gml</script>
-        <script>scripts\WinAPI_WindowSetIconInternal.gml</script>
+        <script>scripts\WinAPI_WindowSetIcon.gml</script>
         <script>scripts\WinAPI_WindowSetParent.gml</script>
         <script>scripts\WinAPI_WindowSetPosition.gml</script>
         <script>scripts\WinAPI_WindowSetSize.gml</script>
@@ -88,6 +87,19 @@
       </scripts>
       <scripts name="Dialog">
         <script>scripts\WinAPI_MessageShow.gml</script>
+      </scripts>
+      <scripts name="Progress Bar">
+        <script>scripts\WinAPI_ProgressBarAdd.gml</script>
+        <script>scripts\WinAPI_ProgressBarSetRange.gml</script>
+        <script>scripts\WinAPI_ProgressBarSetStep.gml</script>
+        <script>scripts\WinAPI_ProgressBarSetWindow.gml</script>
+        <script>scripts\WinAPI_ProgressBarCreate.gml</script>
+        <script>scripts\WinAPI_ProgressBarUpdate.gml</script>
+        <script>scripts\WinAPI_ProgressBarDestroy.gml</script>
+        <script>scripts\WinAPI_ProgressBarSetPosition.gml</script>
+        <script>scripts\WinAPI_ProgressBarSetSize.gml</script>
+        <script>scripts\WinAPI_ProgressBarSetStyle.gml</script>
+        <script>scripts\WinAPI_ProgressBarEnableMarquee.gml</script>
       </scripts>
     </scripts>
   </scripts>

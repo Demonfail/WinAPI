@@ -9,10 +9,18 @@ enum IconType {
 	IconSmall
 };
 
+enum ImageType {
+	Bitmap
+};
+
+enum CursorType {
+	CursorStatic
+};
+
 class Icon {
 public:
 	ErrorCode Load(string file);
-	//ErrorCode Free();
+	ErrorCode Free();
 
 	HICON     Get(IconType icon);
 

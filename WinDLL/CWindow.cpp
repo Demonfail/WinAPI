@@ -53,25 +53,11 @@ ErrorCode CWindow::SetClassStyle(uint flags) {
 	return ErrorCode::ERR_OK;
 }
 
-ErrorCode CWindow::SetIconFile(string file, uint size) {
-	m_hiIcon = (HICON)LoadImage(m_hiInst, TEXT(file), IMAGE_ICON, size, size, LR_LOADFROMFILE);
-	if (m_hiIcon == NULL) {
-		return ErrorCode::ERR_LOAD;
+ErrorCode CWindow::SetIcon(Icon* icon) {
+	m_wcClass.hIcon = icon->Get(IconType::IconBig);
+	if (!m_wcClass.hIcon) {
+		return ErrorCode::ERR_SET;
 	}
-	m_wcClass.hIcon = m_hiIcon;
-	m_wcClass.hIconSm = m_hiIcon;
-
-	return ErrorCode::ERR_OK;
-}
-
-ErrorCode CWindow::SetIconInternal(uint icon) {
-	m_hiIcon = LoadIcon(m_hiInst, MAKEINTRESOURCE(icon));
-	if (m_hiIcon == NULL) {
-		return ErrorCode::ERR_LOAD;
-	}
-	m_wcClass.hIcon = m_hiIcon;
-	m_wcClass.hIconSm = m_hiIcon;
-
 	return ErrorCode::ERR_OK;
 }
 

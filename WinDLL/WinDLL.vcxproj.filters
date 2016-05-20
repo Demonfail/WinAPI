@@ -19,11 +19,11 @@
     <Filter Include="Header Files\Components">
       <UniqueIdentifier>{c2bb753a-31cc-4577-9ec2-760f75331cec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GMLAPI">
+      <UniqueIdentifier>{e24e4d99-f62e-4150-8f4e-3d8d2d17b6ec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CWindow.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
@@ -41,6 +41,12 @@
     </ClCompile>
     <ClCompile Include="CMessageBox.cpp">
       <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="CProgressBar.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -66,6 +72,9 @@
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="CMessageBox.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CProgressBar.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
