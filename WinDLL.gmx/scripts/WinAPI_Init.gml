@@ -15,6 +15,9 @@ global.__WINAPI__[10] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet
 global.__WINAPI__[11] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetStyle", dll_cdecl, ty_real, 2, ty_real, ty_real);
 global.__WINAPI__[12] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSet", dll_cdecl, ty_real, 2, ty_real, ty_string);
 global.__WINAPI__[13] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowSetFlag", dll_cdecl, ty_real, 3, ty_real, ty_real, ty_real);
+global.__WINAPI__[14] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowGetDragFileCount", dll_cdecl, ty_real, 1, ty_real);
+global.__WINAPI__[15] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowGetDragFile", dll_cdecl, ty_string, 2, ty_real, ty_real);
+global.__WINAPI__[16] = external_define(global.__WINAPI_DLL__, "WinAPI_WindowClearDragFiles", dll_cdecl, ty_real, 1, ty_real);
 
 //Resources.
 global.__WINAPI__[20] = external_define(global.__WINAPI_DLL__, "WinAPI_ResourceIconLoad", dll_cdecl, ty_real, 1, ty_string);

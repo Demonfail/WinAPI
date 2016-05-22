@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <Windows.h>
+#include <d3d9.h>
+#include <d3dx9.h>
 #include <Commctrl.h>
 #include <Lmcons.h>
 #include <assert.h>
@@ -28,4 +30,6 @@ public:
 	std::vector<CProgressBar*> m_vProgressBar;
 
 	CConsole* m_pConsole = new CConsole();
+
+	LPDIRECT3DDEVICE9 m_pD3Ddev;
 };

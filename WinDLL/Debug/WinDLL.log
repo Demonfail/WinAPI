@@ -1,4 +1,12 @@
-﻿  Main.cpp
+﻿  Resource.cpp
+  Main.cpp
+  Error.cpp
+  CWindow.cpp
+  CProgressBar.cpp
+  CNotification.cpp
+  CMessageBox.cpp
+  CConsole.cpp
+  Generating Code...
      Creating library E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.lib and object E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.exp
   WinDLL.vcxproj -> E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.dll
   WinDLL.vcxproj -> E:\WinAPI\WinAPI\WinDLL\..\WinDLL.gmx\datafiles\WinDLL.pdb (Partial PDB)

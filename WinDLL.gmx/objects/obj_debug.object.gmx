@@ -38,7 +38,7 @@ gmIcon = WinAPI_ResourceIconLoad("ProgIcon.ico");
 gmWin = WinAPI_WindowAdd(); {
     WinAPI_WindowSet(gmWin, window_handle());
 }
-
+WinAPI_WindowSetFlag(gmWin, WF_DRAGFILES, true);
 
 /**
 #* Create Task Bar.
@@ -87,9 +87,10 @@ chWin = WinAPI_WindowAdd(); {
     } WinAPI_ProgressBarCreate(chWinPB1);
     WinAPI_ProgressBarEnableMarquee(chWinPB1, true, 30);
 }
-WinAPI_WindowUpdate(chWin);
-
 WinAPI_WindowSetFlag(chWin, WF_SHOW, 0);
+WinAPI_WindowSetFlag(chWin, WF_DRAGFILES, true);
+
+WinAPI_WindowUpdate(chWin);
 </string>
           </argument>
         </arguments>
@@ -113,6 +114,13 @@ WinAPI_WindowSetFlag(chWin, WF_SHOW, 0);
           <argument>
             <kind>1</kind>
             <string>WinAPI_ProgressBarUpdate(chWinPB1);
+
+if(WinAPI_WindowGetDragFileCount(gmWin) &gt; 0) {
+    for(var i = 0; i&lt;WinAPI_WindowGetDragFileCount(gmWin); ++i) {
+        WinAPI_ConsoleOutput(WinAPI_WindowGetDragFile(gmWin, i));
+    }
+    WinAPI_WindowClearDragFiles(gmWin);
+}
 </string>
           </argument>
         </arguments>

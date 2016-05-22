@@ -62,6 +62,9 @@
         <script>scripts\WinAPI_WindowSetTitle.gml</script>
         <script>scripts\WinAPI_WindowUpdate.gml</script>
         <script>scripts\WinAPI_WindowSetFlag.gml</script>
+        <script>scripts\WinAPI_WindowGetDragFileCount.gml</script>
+        <script>scripts\WinAPI_WindowGetDragFile.gml</script>
+        <script>scripts\WinAPI_WindowClearDragFiles.gml</script>
       </scripts>
       <scripts name="Taskbar">
         <script>scripts\WinAPI_TaskbarAdd.gml</script>

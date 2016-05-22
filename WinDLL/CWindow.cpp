@@ -1,5 +1,7 @@
 #include "CWindow.h"
 
+std::vector<std::string> g_vDraggedFiles;
+
 LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	switch (msg)
 	{
@@ -11,9 +13,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 				ValidateRect(hWnd, NULL);
 			break;
 
-		case WM_DROPFILES:
-				MessageBox(hWnd, "This should have appeared if files were dragged.", "WinAPI", 0);
-			break;
+		case WM_DROPFILES: {
+			HDROP hDrop = (HDROP)wParam;
+			uint oldsize = g_vDraggedFiles.size();
+			g_vDraggedFiles.resize(oldsize + DragQueryFile(hDrop, 0xFFFFFFFF, NULL, 0));
+
+			for (uint i = oldsize; i < g_vDraggedFiles.size(); ++i) {
+				g_vDraggedFiles[i].resize(DragQueryFile(hDrop, i - oldsize, NULL, 0) + 1);
+				DragQueryFile(hDrop, i - oldsize, (char*)g_vDraggedFiles[i].c_str(), g_vDraggedFiles[i].size());
+			}
+			DragFinish(hDrop);
+		}
+		break;
 
 		default:
 			return DefWindowProc(hWnd, msg, wParam, lParam);
@@ -24,8 +35,18 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 
 LRESULT CALLBACK WndSubclass(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam, UINT_PTR uIdSubclass, DWORD_PTR dwRefData) {
 	switch (msg) {
-		case WM_DROPFILES:
-			break;
+		case WM_DROPFILES: {
+			HDROP hDrop = (HDROP)wParam;
+			uint oldsize = g_vDraggedFiles.size();
+			g_vDraggedFiles.resize(oldsize + DragQueryFile(hDrop, 0xFFFFFFFF, NULL, 0));
+
+			for (uint i = oldsize; i < g_vDraggedFiles.size(); ++i) {
+				g_vDraggedFiles[i].resize(DragQueryFile(hDrop, i - oldsize, NULL, 0) + 1);
+				DragQueryFile(hDrop, i - oldsize, (char*)g_vDraggedFiles[i].c_str(), g_vDraggedFiles[i].size());
+			}
+			DragFinish(hDrop);
+		}
+		break;
 
 		default:
 			return DefSubclassProc(hWnd, msg, wParam, lParam);
@@ -46,6 +67,20 @@ CWindow::CWindow() {
 	m_wcClass.hInstance     = m_hiInst;
 	m_wcClass.lpszClassName = m_sWinClassName;
 	m_wcClass.lpszMenuName  = NULL;
+}
+
+uint CWindow::GetDraggedFileCount() {
+	return g_vDraggedFiles.size();
+}
+
+string CWindow::GetDraggedFile(uint index) {
+	return g_vDraggedFiles[index].c_str();
+}
+
+ErrorCode CWindow::ClearDraggedFiles() {
+	g_vDraggedFiles.clear();
+	g_vDraggedFiles.resize(0);
+	return ErrorCode::ERR_OK;
 }
 
 ErrorCode CWindow::SetClassStyle(uint flags) {
@@ -152,8 +187,8 @@ ErrorCode CWindow::Create() {
 	if (!RegisterClassEx(&m_wcClass)) {
 		return ErrorCode::ERR_REGISTER;
 	}
-
 	m_whHandle = CreateWindow(m_sWinClassName, m_sWinTitle, m_iWinStyle, m_iWinX, m_iWinY, m_iWinWidth, m_iWinHeight, m_whParent, NULL, m_hiInst, NULL);
+
 	if (!m_whHandle) {
 		return ErrorCode::ERR_CREATE;
 	}
@@ -170,6 +205,7 @@ ErrorCode CWindow::Update() {
 
 		MSG msg;
 		GetMessage(&msg, m_whHandle, 0, 0);
+		PeekMessage(&msg, m_whHandle, 0, 0, NULL);
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 		return ErrorCode::ERR_OK;

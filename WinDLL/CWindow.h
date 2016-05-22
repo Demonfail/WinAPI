@@ -1,6 +1,9 @@
 #pragma once
 
 #include <Windows.h>
+#include <vector>
+#include <d3d9.h>
+#include <d3dx9.h>
 #include <Commctrl.h>
 
 #include "Resource.h"
@@ -29,8 +32,12 @@ public:
 	ErrorCode Update();
 
 	ErrorCode Set(HWND handle);
+	HWND      GetWindowHandle();
 
-	HWND GetWindowHandle();
+	ErrorCode ClearDraggedFiles();
+	uint      GetDraggedFileCount();
+	string    GetDraggedFile(uint index);
+
 
 private:
 	HICON          m_hiIcon;
@@ -40,6 +47,8 @@ private:
 	WNDCLASSEX m_wcClass;
 	LONG_PTR   m_lpWndProc = NULL;
 
+	LPDIRECT3DSWAPCHAIN9 m_pDX9SwapChain;
+
 	uint   m_iWinStyle;
 	uint   m_iWinX = CW_USEDEFAULT;
 	uint   m_iWinY = CW_USEDEFAULT;
@@ -47,7 +56,7 @@ private:
 	uint   m_iWinHeight;
 	HWND   m_whParent = NULL;
 	string m_sWinTitle;
-	string m_sWinClassName = "gmapi_window333";
+	string m_sWinClassName = "gmapi_window";
 
 	bool m_bIsMain;
 };

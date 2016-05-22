@@ -19,7 +19,7 @@ double ErrorHandle(ErrorCode err) {
 		return 1;
 	}
 
-	std::cout << ErrorGetString(err);
+	std::cout << ErrorGetString(err) << std::endl;
 	MessageBox(NULL, TEXT(ErrorGetString(err)), "Error!", MB_ICONSTOP);
 	return 0;
 }

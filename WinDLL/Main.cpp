@@ -48,6 +48,20 @@ GMEXPORT double WinAPI_WindowAdd() {
 	return  winapi->m_vWindow.size() - 1;
 }
 
+GMEXPORT double WinAPI_WindowGetDragFileCount(double index) {
+	uint cnt = winapi->m_vWindow[(uint)index]->GetDraggedFileCount();
+	return (double) cnt;
+}
+
+GMEXPORT string WinAPI_WindowGetDragFile(double index, double fileindex) {
+	return winapi->m_vWindow[(uint)index]->GetDraggedFile((uint)fileindex);
+}
+
+GMEXPORT double WinAPI_WindowClearDragFiles(double index) {
+	ErrorCode err = winapi->m_vWindow[(uint)index]->ClearDraggedFiles();
+	return ErrorHandle(err);
+}
+
 GMEXPORT double WinAPI_WindowSetSize(double index, double width, double height) {
 	ErrorCode err = winapi->m_vWindow[(uint)index]->SetSize((uint)width, (uint)height);
 	return ErrorHandle(err);
